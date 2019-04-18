@@ -57,14 +57,17 @@ public class MainActivity extends AppCompatActivity {
                 if(
                         !TextUtils.isEmpty(txtA.getText().toString() ) && !TextUtils.isEmpty(txtB.getText().toString() )
                 ){
-                    int a = Integer.parseInt(txtA.getText().toString());
-                    int b = Integer.parseInt(txtB.getText().toString());
-                    int kq =  a/b;
-                    txtKetQua.setText(String.valueOf(a)+"/"+String.valueOf(b)+"="+String.valueOf(kq));
-
+                    if( !TextUtils.isDigitsOnly(txtA.getText().toString()) || !TextUtils.isDigitsOnly(txtB.getText().toString()) ) {
+                            Toast.makeText(MainActivity.this, "Vui lòng nhập số ! ",Toast.LENGTH_LONG).show();
+                    }else{
+                        int a = Integer.parseInt(txtA.getText().toString());
+                        int b = Integer.parseInt(txtB.getText().toString());
+                        int kq = a / b;
+                        txtKetQua.setText(String.valueOf(a) + "/" + String.valueOf(b) + "=" + String.valueOf(kq));
+                    }
                 }
                 else{
-                    Toast.makeText(MainActivity.this,"chua nhap du lieu ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"Không được để trống",Toast.LENGTH_LONG).show();
                 }
 
             }
